@@ -10,38 +10,26 @@ namespace Module1_1
     {
         static void Main(string[] args)
         {
-            //Input data
-            bool check = true;
-            int firstPoint = 0;
-            int secondPoint = 0;
-            while (check)
+            Swap(Input(),Input());
+            Console.ReadKey();
+        }
+        public static int Input()
+        {
+            int point;
+            Console.WriteLine("Input point");
+            while (!(int.TryParse(Console.ReadLine(), out point)))
             {
-                Console.WriteLine("Input integer firstPoint");
-                if (int.TryParse(Console.ReadLine(), out firstPoint))
-                    check = false;
-                else
-                    Console.WriteLine("Incorrect data.Try again.");
+                Console.WriteLine("Incorrect data.Try again.");
             }
-
-            check = true;
-            while (check)
-            {
-                Console.WriteLine("Input integer secondPoint");
-                if (int.TryParse(Console.ReadLine(), out secondPoint))
-                    check = false;
-                else
-                    Console.WriteLine("Incorrect data.Try again.");
-            }
-
-            //Swap
+            return point;
+        }
+        public static void Swap(int firstPoint, int secondPoint)
+        {
             firstPoint += secondPoint;
             secondPoint = firstPoint - secondPoint;
             firstPoint -= secondPoint;
-
-            //Output data
             Console.WriteLine("firstPoint=" + firstPoint);
             Console.WriteLine("secondPoint=" + secondPoint);
-            Console.ReadKey();
         }
     }
 }
