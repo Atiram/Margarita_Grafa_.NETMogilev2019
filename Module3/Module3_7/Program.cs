@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace Module3_7
 {
@@ -9,11 +10,11 @@ namespace Module3_7
             // Input length and creation an array of this length.
             Console.WriteLine("Input length of the array");
             double[] arrayForChoosingElemetns = new double[InputLength()];
+            StringBuilder arrayElements = new StringBuilder();
             if (arrayForChoosingElemetns.Length != 0)
             {
-
                 // Input the array.
-                Console.WriteLine("Input {0} elements of the array", arrayForChoosingElemetns.Length);
+                Console.WriteLine($"Input {arrayForChoosingElemetns.Length} elements of the array");
                 for (int i = 0; i < arrayForChoosingElemetns.Length; i++)
                 {
                     arrayForChoosingElemetns[i] = InputNumber();
@@ -25,15 +26,15 @@ namespace Module3_7
                 {
                     if (arrayForChoosingElemetns[i - 1] < arrayForChoosingElemetns[i])
                     {
-                        Console.Write(arrayForChoosingElemetns[i] + " ");
+                        arrayElements.Insert(arrayElements.Length, $"{arrayForChoosingElemetns[i]} ");
                     }
                 }
+                Console.WriteLine(arrayElements);
             }
             else
             {
                 Console.WriteLine("The lenght is 0. There are 0 elements in the array.");
             }
-
             Console.ReadKey();
         }
 

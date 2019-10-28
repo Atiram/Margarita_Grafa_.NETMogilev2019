@@ -13,7 +13,7 @@ namespace Module3_6
             // Input the array and verification if the length of the array is 0.
             if (arrayForChangeSign.Length != 0)
             {
-                Console.WriteLine("Input {0} elements of the array", arrayForChangeSign.Length);
+                Console.WriteLine($"Input {arrayForChangeSign.Length} elements of the array");
                 for (int i = 0; i < arrayForChangeSign.Length; i++)
                 {
                     arrayForChangeSign[i] = InputDoubleNumber();
@@ -26,7 +26,7 @@ namespace Module3_6
                 }
 
                 // Output data.
-                Console.WriteLine("Array length: {0}. Array:", arrayForChangeSign.Length);
+                Console.WriteLine($"Array length: {arrayForChangeSign.Length}. Array:");
                 for (int i = 0; i < arrayForChangeSign.Length; i++)
                 {
                     Console.Write(arrayForChangeSign[i] + " ");
@@ -34,7 +34,7 @@ namespace Module3_6
             }
             else
             {
-                Console.WriteLine("Array length: {0}. There no elements in the array.", arrayForChangeSign.Length);
+                Console.WriteLine($"Array length: {arrayForChangeSign.Length}. There no elements in the array.");
             }
             Console.ReadKey();
         }

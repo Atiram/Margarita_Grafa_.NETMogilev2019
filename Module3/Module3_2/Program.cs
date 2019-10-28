@@ -7,46 +7,38 @@ namespace Module3_2
         static void Main(string[] args)
         {
             // Input data.
-            uint quantityOfNumbers = InputNumber();
+            uint quantityOfNumbers = InputQuantity();
 
-            // Verification if quantity of numbers is 0.
-            if (quantityOfNumbers != 0)
+            // Calculation.
+            int[] arrayOfEvenNumbers = new int[quantityOfNumbers];
+            for (int i = 0; i < arrayOfEvenNumbers.Length; i++)
             {
-                // Calculation.
-                int[] arrayOfEvenNumbers = new int[quantityOfNumbers];
-                for (int i = 0; i < arrayOfEvenNumbers.Length; i++)
-                {
-                    arrayOfEvenNumbers[i] = i * 2;
-                }
-
-                // Ouput data.
-                Console.WriteLine("The number is {0} and the array of even numbers is: ", quantityOfNumbers);
-                for (int i = 0; i < arrayOfEvenNumbers.Length; i++)
-                {
-                    Console.Write(arrayOfEvenNumbers[i] + " ");
-                }
+                arrayOfEvenNumbers[i] = i * 2;
             }
-            else
+
+            // Ouput data.
+            Console.WriteLine($"The number is {quantityOfNumbers} and the array of even numbers is: ");
+            for (int i = 0; i < arrayOfEvenNumbers.Length; i++)
             {
-                Console.WriteLine("The number is {0} and there no elements in the array of even numbers", quantityOfNumbers);
+                Console.Write(arrayOfEvenNumbers[i] + " ");
             }
             Console.ReadKey();
         }
 
-        // Verification of the unsigned integer number.
-        public static bool IsValidData(out uint inputNumber)
+        // Verification of the quantity of numbers.
+        public static bool IsValidQuantity(out uint inputNumber)
         {
-            return (uint.TryParse(Console.ReadLine(), out inputNumber));
+            return ((uint.TryParse(Console.ReadLine(), out inputNumber)) && (inputNumber > 0));
         }
-
-        // Input of the unsigned integer number.
-        public static uint InputNumber()
+                
+        // Input of the quantity.
+        public static uint InputQuantity()
         {
             uint newNumber;
-            Console.WriteLine("Input number");
-            while (!IsValidData(out newNumber))
+            Console.WriteLine("Input quantity of even numbers");
+            while (!IsValidQuantity(out newNumber))
             {
-                Console.WriteLine("Incorrect data. Try again using unsigned interger number.");
+                Console.WriteLine("Incorrect data. Try again.");
             }
             return newNumber;
         }

@@ -25,7 +25,7 @@ namespace Module3_4
             }
 
             // Output palindrome.
-            Console.WriteLine("Palindrome: " + palindrome);
+            Console.WriteLine($"Palindrome: {palindrome}");
             Console.ReadKey();
         }
 

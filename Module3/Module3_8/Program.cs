@@ -4,35 +4,47 @@ namespace Module3_8
 {
     class Program
     {
-        private const double Epsilon = .001;
+        private const double EPSILON = .001;
         private static void Main()
         {
 
             // Input data.
             Console.Write("Begin point x = ");
             double beginPoint = InputDoubleNumber();
-            double endPiont;
+            double endPoint;
             do
             {
                 Console.Write("End point x = ");
             }
-            while (beginPoint > (endPiont = InputDoubleNumber()));
+            while (beginPoint > (endPoint = InputDoubleNumber()));
 
-            // Calculation.
-            if (!(CheckExtreme(CalculateFunction(beginPoint)) || CheckExtreme(CalculateFunction(endPiont))))
+            if (beginPoint < endPoint && Math.Sign(CalculateFunction(beginPoint)) != Math.Sign(CalculateFunction(endPoint)))
             {
-                double axesX = endPiont - beginPoint;
-                double averegePoint = Math.Round((beginPoint + endPiont) / 2, 3);
-                while (Math.Abs(CalculateFunction(averegePoint) - Epsilon) > Epsilon)
-                {
-                    axesX /= 2;
-                    averegePoint = Math.Round(beginPoint + axesX, 3);
-                    if (Math.Sign(CalculateFunction(beginPoint)) == Math.Sign(CalculateFunction(averegePoint)))
-                        beginPoint = averegePoint;
-                }
 
-                // Output of solution.
-                Console.WriteLine(averegePoint);
+                // Calculation.
+                if (!(CheckExtreme(beginPoint) || CheckExtreme(endPoint)))
+                {
+                    double axesX = endPoint - beginPoint;
+                    double averegePoint;
+                    do
+                    {
+                        axesX /= 2;
+                        averegePoint = beginPoint + axesX;
+                        Console.WriteLine(averegePoint);
+                        if (Math.Sign(CalculateFunction(beginPoint)) == Math.Sign(CalculateFunction(averegePoint)))
+                        {
+                            beginPoint = averegePoint;
+                        }
+                    }
+                    while (Math.Abs(CalculateFunction(averegePoint)) > EPSILON);
+
+                    // Output of solution.
+                    Console.WriteLine(averegePoint);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Incorrect data");
             }
 
 
@@ -45,7 +57,7 @@ namespace Module3_8
 
         private static bool CheckExtreme(double value)
         {
-            if (Math.Abs(CalculateFunction(value)) < Epsilon)
+            if (Math.Abs(CalculateFunction(value)) < EPSILON)
             {
                 Console.WriteLine(value);
                 return true;
@@ -55,7 +67,7 @@ namespace Module3_8
 
         private static double CalculateFunction(double x)
         {
-            return 4 * x + 15;
+            return 4 * x + 16;
         }
 
         //Verification of the integer number.

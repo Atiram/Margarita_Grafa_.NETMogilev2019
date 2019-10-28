@@ -11,11 +11,7 @@ namespace Module3_5
             int number = InputNumber();
             int newNumber = 0;
             Console.WriteLine("Input removing number");
-            int removeNumber;
-            while ((removeNumber = InputNumber()) >= 10)
-            {
-                Console.WriteLine("Incorrect data.Try again.");
-            }
+            int removeNumber = InputRemoveNumber();
             int[] arrayFromNumber = new int[GetLength(number)];
 
             // Creating an array from number.
@@ -35,23 +31,40 @@ namespace Module3_5
             }
 
             // Output data.
-            Console.WriteLine("New number after removing {0} : {1}", removeNumber, newNumber);
+            Console.WriteLine($"New number after removing {removeNumber} : {newNumber}");
             Console.ReadKey();
         }
 
-        // Verification of the integer number.
+        // Verification of the natural number.
         public static bool IsValidData(out int inputNumber)
         {
-            return (int.TryParse(Console.ReadLine(), out inputNumber));
+            return ((int.TryParse(Console.ReadLine(), out inputNumber)) && (inputNumber > 0));
         }
 
-        // Input of the unsigned integer number.
+        // Input of the natural number.
         public static int InputNumber()
         {
             int newNumber;
             while (!IsValidData(out newNumber))
             {
-                Console.WriteLine("Incorrect data. Try again using interger number.");
+                Console.WriteLine("Incorrect data. Try again.");
+            }
+            return newNumber;
+        }
+
+        // Verification of the removing number.
+        public static bool IsValidRemoveNumber(out int inputNumber)
+        {
+            return ((int.TryParse(Console.ReadLine(), out inputNumber)) && (inputNumber >= 0) && (inputNumber<10));
+        }
+
+        // Input of the removing number.
+        public static int InputRemoveNumber()
+        {
+            int newNumber;
+            while (!IsValidRemoveNumber(out newNumber))
+            {
+                Console.WriteLine("Incorrect data. Try again.");
             }
             return newNumber;
         }

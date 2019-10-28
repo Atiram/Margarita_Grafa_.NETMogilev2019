@@ -23,7 +23,7 @@ namespace Module3_1
             }
 
             // Output data.
-            Console.WriteLine("Multiplication is " + multiplication);
+            Console.WriteLine($"Multiplication is {multiplication}");
             Console.ReadKey();
         }
 

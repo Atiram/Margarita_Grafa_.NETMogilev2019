@@ -7,32 +7,32 @@ namespace Module3_3
         static void Main(string[] args)
         {
             // Creating 2 constant variable for calculation Fibonacci numbers.
-            const int firstFibonachiNumber = 0;
-            const int secondFibonachiNumber = 1;
+            const int FIRST_FIBONACHI_NUMBER = 0;
+            const int SECOND_FIBONACHI_NUMBER = 1;
 
             // Input data.
             uint quantityOfNumbers = InputNumber();
 
             // Calculation and Ouput data.
-            int[] ArrayOfFibonacciNumbers = new int[quantityOfNumbers];
+            int[] arrayOfFibonacciNumbers = new int[quantityOfNumbers];
             if (quantityOfNumbers == 0)
             {
                 Console.WriteLine("No elements in the array of Fibonacci numbers");
             }
             else if (quantityOfNumbers == 1)
             {
-                ArrayOfFibonacciNumbers[0] = firstFibonachiNumber;
-                DisplayArray(ArrayOfFibonacciNumbers);
+                arrayOfFibonacciNumbers[0] = FIRST_FIBONACHI_NUMBER;
+                DisplayArray(arrayOfFibonacciNumbers);
             }
             else
             {
-                ArrayOfFibonacciNumbers[0] = firstFibonachiNumber;
-                ArrayOfFibonacciNumbers[1] = secondFibonachiNumber;
-                for (int i = 2; i < ArrayOfFibonacciNumbers.Length; i++)
+                arrayOfFibonacciNumbers[0] = FIRST_FIBONACHI_NUMBER;
+                arrayOfFibonacciNumbers[1] = SECOND_FIBONACHI_NUMBER;
+                for (int i = 2; i < arrayOfFibonacciNumbers.Length; i++)
                 {
-                    ArrayOfFibonacciNumbers[i] = ArrayOfFibonacciNumbers[i - 1] + ArrayOfFibonacciNumbers[i - 2];
+                    arrayOfFibonacciNumbers[i] = arrayOfFibonacciNumbers[i - 1] + arrayOfFibonacciNumbers[i - 2];
                 }
-                DisplayArray(ArrayOfFibonacciNumbers);
+                DisplayArray(arrayOfFibonacciNumbers);
             }
             Console.ReadKey();
         }
